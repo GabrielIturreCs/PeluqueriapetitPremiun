@@ -1,0 +1,987 @@
+/* ===== LUXURY DESIGN SYSTEM (CRO OPTIMIZED) ===== */
+:root {
+    /* Palette - Quiet Luxury */
+    --bg-color: #F5F5DC;
+    /* Creamy Beige */
+    --text-primary: #3E2723;
+    /* Deep Espresso Brown */
+    --text-secondary: #5D4037;
+    --accent-gold: #D4AF37;
+    /* Soft Metallic Gold */
+    --white: #FFFFFF;
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(62, 39, 35, 0.1);
+
+    /* Typography */
+    --font-brand: 'Cinzel', serif;
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    /* Spacing */
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+    /* Space for sticky bottom bar */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollLoop {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-350px * 3 - 1.5rem * 3));
+        /* Width of 3 cards + gaps */
+    }
+}
+
+/* ===== HEADER (Apple Effect) ===== */
+.luxury-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.4s ease;
+    background: transparent;
+    /* Default transparent */
+}
+
+.luxury-header.scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(62, 39, 35, 0.05);
+    padding: 0.8rem 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-family: var(--font-brand);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: 0.3s;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    color: var(--text-primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-gold);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ===== HERO SECTION (Parallax & Reveal) ===== */
+.hero-luxury {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+/* Parallax Background Layer */
+.hero-bg-parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    /* Taller for parallax movement */
+    background: url('../images/pelupetit.PNG') no-repeat center center/cover;
+    z-index: 0;
+    will-change: transform;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+    max-width: 800px;
+}
+
+/* Staggered Animation - Slower & More Dramatic */
+.hero-subtitle {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s forwards;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-luxury {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards, glow 2s infinite alternate 2.2s;
+    /* ... existing btn styles ... */
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--accent-gold);
+    border: none;
+    border-radius: 50px;
+    color: var(--white);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.6);
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    to {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+}
+
+/* ===== SOCIAL PROOF (Infinite Scroll) ===== */
+.social-proof-section {
+    padding: 3rem 0;
+    background: var(--white);
+    border-bottom: 1px solid rgba(62, 39, 35, 0.1);
+    overflow: hidden;
+    /* Hide overflow for infinite scroll */
+}
+
+.social-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stars-icon {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.social-text {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.testimonials-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 0 5% 1rem 5%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.testimonials-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonials-wrapper {
+    display: flex;
+    width: max-content;
+    /* Allow content to expand */
+    animation: scrollLoop 40s linear infinite;
+    /* Slower loop */
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.testimonials-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-card-swipe {
+    flex: 0 0 350px;
+    /* Fixed width for smooth calculation */
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(62, 39, 35, 0.05);
+}
+
+.testimonial-quote {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+/* ===== SERVICES (MOBILE FIRST CAROUSEL) ===== */
+.services-luxury {
+    padding: var(--spacing-lg) 0;
+    background: var(--bg-color);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.separator {
+    width: 60px;
+    height: 2px;
+    background: var(--accent-gold);
+    margin: 0 auto;
+}
+
+/* Carousel Container */
+.services-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 1rem 5% 2rem 5%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.services-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Service Card */
+.service-card-luxury {
+    /* ... existing styles ... */
+    flex: 0 0 85%;
+    max-width: 350px;
+    scroll-snap-align: center;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    /* Make whole card clickable */
+}
+
+.card-image {
+    height: 100%;
+    /* Full height image */
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    /* Contain zoom */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-out;
+    /* Smooth zoom */
+}
+
+.service-card-luxury:hover .card-image img {
+    transform: scale(1.05);
+    /* Slow Zoom */
+}
+
+/* Glassmorphism Overlay for Content */
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.service-card-luxury:hover .card-content {
+    background: rgba(255, 255, 255, 0.6);
+    /* More transparent on hover */
+    backdrop-filter: blur(15px);
+    /* Stronger blur */
+}
+
+.card-content h3 {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: none;
+    /* Hidden on card, shown in modal */
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.price {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: rgba(212, 175, 55, 0.2);
+    /* Gold tint */
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.btn-icon {
+    background: var(--text-primary);
+    border: none;
+    width: auto;
+    /* Allow text expansion */
+    height: 35px;
+    padding: 0 15px;
+    /* Padding for text */
+    border-radius: 20px;
+    /* Pill shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.btn-icon i {
+    display: none;
+    /* Hide icon */
+}
+
+.btn-icon::after {
+    content: 'VER';
+    /* Change to text */
+}
+
+/* ===== TRANSFORMATIONS (Before/After Slider) ===== */
+.transformations-luxury {
+    padding: var(--spacing-lg) 0;
+    background: var(--white);
+}
+
+.section-subtitle {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.comparison-container {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+}
+
+.comparison-slider {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    /* Fixed height for consistency */
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15);
+    cursor: col-resize;
+    user-select: none;
+}
+
+.image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Before Image (Grayscale for dramatic effect) */
+.before-image {
+    z-index: 1;
+    width: 50%;
+    /* Initial state */
+    filter: grayscale(80%) contrast(1.1);
+    /* Make "Before" look slightly duller */
+}
+
+.after-image {
+    z-index: 0;
+}
+
+/* Labels */
+.label-badge {
+    position: absolute;
+    top: 20px;
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.before-label {
+    left: 20px;
+}
+
+.after-label {
+    right: 20px;
+}
+
+/* Slider Handle */
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* Initial state */
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gold);
+    z-index: 10;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* Let clicks pass through to container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.handle-circle {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--white);
+    font-size: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== FLOATING WHATSAPP (Desktop) ===== */
+.floating-whatsapp-desktop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.floating-whatsapp-desktop:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #25D366;
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    70% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.tooltip-text {
+    position: absolute;
+    right: 75px;
+    background: var(--white);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.floating-whatsapp-desktop:hover .tooltip-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Hide on Mobile (since we have sticky bar) */
+@media (max-width: 768px) {
+    .floating-whatsapp-desktop {
+        display: none;
+    }
+
+    .comparison-slider {
+        height: 300px;
+        /* Smaller height for mobile */
+    }
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--bg-color);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.modal-title {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.modal-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.modal-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.btn-modal-action {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--text-primary);
+    color: var(--white);
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ===== LOCATION ===== */
+.location-luxury {
+    padding: var(--spacing-lg) 0;
+    background: var(--white);
+}
+
+.location-address {
+    margin-top: 1rem;
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+}
+
+.map-container-luxury {
+    margin-top: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.1);
+    border: 1px solid rgba(62, 39, 35, 0.1);
+}
+
+.map-container-luxury iframe {
+    filter: grayscale(100%) sepia(20%) contrast(1.1);
+    /* Grayscale with slight sepia */
+    transition: filter 0.3s;
+}
+
+.map-container-luxury:hover iframe {
+    filter: none;
+}
+
+/* ===== FOOTER ===== */
+.footer-luxury {
+    padding: 2rem 0;
+    background: var(--text-primary);
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== STICKY BOTTOM BAR (CRO OPTIMIZED) ===== */
+.sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    background: var(--white);
+    backdrop-filter: none;
+    border-radius: 0;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    border-top: 1px solid rgba(62, 39, 35, 0.1);
+}
+
+.btn-whatsapp-icon {
+    width: 30%;
+    /* 30% width */
+    height: 50px;
+    background: #25D366;
+    border-radius: 10px;
+    /* Rounded rect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    box-shadow: none;
+}
+
+.btn-reserve-now {
+    flex: 1;
+    /* 70% width */
+    height: 50px;
+    background: var(--accent-gold);
+    color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    text-transform: uppercase;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--bg-color);
+        padding: 5rem 2rem;
+        transition: 0.4s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .services-scroll-container {
+        padding-left: 1rem;
+    }
+
+    .service-card-luxury {
+        flex: 0 0 85%;
+    }
+}
+
+@media (min-width: 769px) {
+    .services-scroll-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow: visible;
+    }
+
+    .service-card-luxury {
+        flex: 0 0 300px;
+        height: 500px;
+    }
+
+    .sticky-bottom-bar {
+        display: none;
+    }
+
+    /* Desktop floating whatsapp */
+    .sticky-bottom-bar {
+        bottom: 30px;
+        right: 30px;
+        left: auto;
+        width: auto;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        pointer-events: none;
+        padding: 0;
+    }
+
+    .btn-whatsapp-icon {
+        pointer-events: auto;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 2rem;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+
+    .btn-reserve-now {
+        display: none;
+    }
+}

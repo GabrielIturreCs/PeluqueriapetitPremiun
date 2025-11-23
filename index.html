@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Peluquería Petit | Lujo y Estilo en Palpalá</title>
+  <meta name="description"
+    content="Experiencia de belleza premium en Palpalá. Cortes de diseño, coloración experta y tratamientos exclusivos en un ambiente de lujo.">
+  <meta name="theme-color" content="#F5E6D3">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="CSS/stylesmarron.css">
+</head>
+
+<body>
+
+  <!-- Sticky Header -->
+  <header class="luxury-header">
+    <div class="container header-container">
+      <a href="#" class="brand-logo">PETIT</a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#servicios" class="nav-link">Servicios</a></li>
+          <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero-luxury">
+    <div class="hero-bg-parallax"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-subtitle">Expertos en colorimetría y corte</span>
+      <h1 class="hero-title">Lujo y Estilo en Palpalá: Descubre tu Mejor Versión</h1>
+      <p class="hero-text">Resultados de salón internacional, cerca de ti.</p>
+      <a href="#servicios" class="btn-luxury">RESERVAR TURNO AHORA</a>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section class="social-proof-section">
+    <div class="container">
+      <div class="social-header">
+        <p class="social-text">Más de 500 clientas felices en Jujuy</p>
+        <div class="stars-icon">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i>
+        </div>
+      </div>
+      <div class="testimonials-scroll">
+        <div class="testimonials-wrapper">
+          <!-- Original Testimonials -->
+          <div class="testimonial-card-swipe">
+            <p class="testimonial-quote">"El mejor rubio que me hicieron en mi vida. La atención es impecable."</p>
+            <p class="testimonial-author">- Maria G.</p>
+          </div>
+          <div class="testimonial-card-swipe">
+            <p class="testimonial-quote">"Me encanta como me dejan el pelo. Siempre vuelvo por el corte y la nutrición."
+            </p>
+            <p class="testimonial-author">- Sofia L.</p>
+          </div>
+          <div class="testimonial-card-swipe">
+            <p class="testimonial-quote">"Profesionales de verdad. El ambiente es súper relajante y exclusivo."</p>
+            <p class="testimonial-author">- Carla R.</p>
+          </div>
+          <!-- Duplicated for Infinite Loop -->
+          <div class="testimonial-card-swipe">
+            <p class="testimonial-quote">"El mejor rubio que me hicieron en mi vida. La atención es impecable."</p>
+            <p class="testimonial-author">- Maria G.</p>
+          </div>
+          <div class="testimonial-card-swipe">
+            <p class="testimonial-quote">"Me encanta como me dejan el pelo. Siempre vuelvo por el corte y la nutrición."
+            </p>
+            <p class="testimonial-author">- Sofia L.</p>
+          </div>
+          <div class="testimonial-card-swipe">
+            <p class="testimonial-quote">"Profesionales de verdad. El ambiente es súper relajante y exclusivo."</p>
+            <p class="testimonial-author">- Carla R.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section (Mobile First Carousel) -->
+  <section id="servicios" class="services-luxury">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="separator"></div>
+      </div>
+
+      <!-- Horizontal Snap Scroll Container -->
+      <div class="services-scroll-container">
+
+        <!-- Card 1 -->
+        <div class="service-card-luxury" data-aos="fade-up" data-aos-delay="100" onclick="openModal('modal-clasico')">
+          <div class="card-image">
+            <img src="images/corte clasico 2.jpg" alt="Corte Clásico" loading="lazy">
+          </div>
+          <div class="card-content">
+            <h3>Corte Clásico</h3>
+            <p class="card-desc">Elegancia atemporal para caballeros. Incluye lavado y peinado.</p>
+            <div class="card-footer">
+              <span class="price">Desde $2,500</span>
+              <button class="btn-icon" aria-label="Ver más"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card-luxury" data-aos="fade-up" data-aos-delay="200" onclick="openModal('modal-fade')">
+          <div class="card-image">
+            <img src="images/corte desvanecido 2.jpg" alt="Fade Moderno" loading="lazy">
+          </div>
+          <div class="card-content">
+            <h3>Fade Moderno</h3>
+            <p class="card-desc">Degradado perfecto y estilo urbano. Técnicas avanzadas de barbería.</p>
+            <div class="card-footer">
+              <span class="price">Desde $3,000</span>
+              <button class="btn-icon" aria-label="Ver más"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card-luxury" data-aos="fade-up" data-aos-delay="300" onclick="openModal('modal-styling')">
+          <div class="card-image">
+            <img src="images/corte moderno 1.jpg" alt="Styling Femenino" loading="lazy">
+          </div>
+          <div class="card-content">
+            <h3>Styling Femenino</h3>
+            <p class="card-desc">Cortes que resaltan tu belleza natural. Asesoramiento de visagismo incluido.</p>
+            <div class="card-footer">
+              <span class="price">Desde $2,500</span>
+              <button class="btn-icon" aria-label="Ver más"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card-luxury" data-aos="fade-up" data-aos-delay="400" onclick="openModal('modal-nutricion')">
+          <div class="card-image">
+            <img src="images/corte + nutricion 2.jpg" alt="Nutrición Profunda" loading="lazy">
+          </div>
+          <div class="card-content">
+            <h3>Nutrición Profunda</h3>
+            <p class="card-desc">Revitalización total para tu cabello. Productos de alta gama.</p>
+            <div class="card-footer">
+              <span class="price">Desde $6,000</span>
+              <button class="btn-icon" aria-label="Ver más"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card-luxury" data-aos="fade-up" data-aos-delay="500"
+          onclick="openModal('modal-permanente')">
+          <div class="card-image">
+            <img src="images/permanente largo 2.jpg" alt="Permanente" loading="lazy">
+          </div>
+          <div class="card-content">
+            <h3>Permanente</h3>
+            <p class="card-desc">Ondas definidas y volumen duradero. Cuidado especial para tu fibra capilar.</p>
+            <div class="card-footer">
+              <span class="price">Desde $9,000</span>
+              <button class="btn-icon" aria-label="Ver más"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-dot active"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After Transformation Section -->
+  <section id="transformaciones" class="transformations-luxury">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Transformaciones Reales</h2>
+        <div class="separator"></div>
+        <p class="section-subtitle">Descubre el poder de un buen corte y nutrición.</p>
+      </div>
+
+      <div class="comparison-container">
+        <div class="comparison-slider">
+          <div class="image-wrapper before-image">
+            <img src="images/corte + nutricion.jpg" alt="Antes" loading="lazy">
+            <span class="label-badge before-label">ANTES</span>
+          </div>
+          <div class="image-wrapper after-image">
+            <img src="images/corte + nutricion 2.jpg" alt="Después" loading="lazy">
+            <span class="label-badge after-label">DESPUÉS</span>
+          </div>
+          <div class="slider-handle">
+            <div class="handle-line"></div>
+            <div class="handle-circle">
+              <i class="fas fa-chevron-left"></i>
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp (Desktop) -->
+  <a href="https://wa.me/543884461948?text=Hola,%20vi%20sus%20transformaciones%20y%20quiero%20un%20cambio%20de%20look"
+    class="floating-whatsapp-desktop" target="_blank" aria-label="Chat WhatsApp">
+    <div class="whatsapp-pulse"></div>
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip-text">¡Agenda tu cambio de look!</span>
+  </a>
+
+  <!-- Location Section -->
+  <section id="ubicacion" class="location-luxury">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <h2 class="section-title">Encuéntranos</h2>
+        <div class="separator"></div>
+        <p class="location-address">📍 Av. Libertad 525, Palpalá, Jujuy (Al lado del Autoservicio Paredes)</p>
+      </div>
+      <div class="map-container-luxury" data-aos="zoom-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.646849876543!2d-65.20377801579096!3d-24.258610991124925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDE1JzMxLjAiUyA2NcKwMTInMTMuNiJX!5e0!3m2!1ses!2sar!4v1625684567890!5m2!1ses!2sar"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-luxury">
+    <div class="container text-center">
+      <p>&copy; 2024 Peluquería Petit. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Sticky Bottom Bar (Mobile Only) -->
+  <div class="sticky-bottom-bar">
+    <a href="https://wa.me/543884461948" class="btn-whatsapp-icon" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://wa.me/543884461948?text=Hola,%20quiero%20reservar%20un%20turno" class="btn-reserve-now">
+      AGENDAR CITA
+    </a>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal-clasico" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-clasico')">&times;</button>
+      <h3 class="modal-title">Corte Clásico</h3>
+      <p class="modal-desc">Un servicio diseñado para el caballero moderno que aprecia la elegancia atemporal. Incluye
+        lavado con productos premium, corte a tijera o máquina, y peinado final.</p>
+      <span class="modal-price">Desde $2,500</span>
+      <a href="https://wa.me/543884461948?text=Hola,%20quiero%20reservar%20un%20Corte%20Clásico"
+        class="btn-modal-action">Reservar Ahora</a>
+    </div>
+  </div>
+
+  <div id="modal-fade" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-fade')">&times;</button>
+      <h3 class="modal-title">Fade Moderno</h3>
+      <p class="modal-desc">Degradado perfecto realizado con técnicas de precisión. Ideal para un look urbano y fresco.
+        Incluye perfilado de contornos.</p>
+      <span class="modal-price">Desde $3,000</span>
+      <a href="https://wa.me/543884461948?text=Hola,%20quiero%20reservar%20un%20Fade%20Moderno"
+        class="btn-modal-action">Reservar Ahora</a>
+    </div>
+  </div>
+
+  <div id="modal-styling" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-styling')">&times;</button>
+      <h3 class="modal-title">Styling Femenino</h3>
+      <p class="modal-desc">Más que un corte, una experiencia de diseño. Analizamos tu rostro (visagismo) para crear el
+        estilo que mejor resalte tus facciones.</p>
+      <span class="modal-price">Desde $2,500</span>
+      <a href="https://wa.me/543884461948?text=Hola,%20quiero%20reservar%20un%20Styling%20Femenino"
+        class="btn-modal-action">Reservar Ahora</a>
+    </div>
+  </div>
+
+  <div id="modal-nutricion" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-nutricion')">&times;</button>
+      <h3 class="modal-title">Nutrición Profunda</h3>
+      <p class="modal-desc">Tratamiento intensivo para recuperar el brillo y la suavidad de tu cabello. Utilizamos
+        ampollas y máscaras de alta gama.</p>
+      <span class="modal-price">Desde $6,000</span>
+      <a href="https://wa.me/543884461948?text=Hola,%20quiero%20reservar%20una%20Nutrición%20Profunda"
+        class="btn-modal-action">Reservar Ahora</a>
+    </div>
+  </div>
+
+  <div id="modal-permanente" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-permanente')">&times;</button>
+      <h3 class="modal-title">Permanente</h3>
+      <p class="modal-desc">Consigue unos rizos definidos y con movimiento. Nuestro proceso cuida la salud de tu cabello
+        para un resultado natural y duradero.</p>
+      <span class="modal-price">Desde $9,000</span>
+      <a href="https://wa.me/543884461948?text=Hola,%20quiero%20reservar%20una%20Permanente"
+        class="btn-modal-action">Reservar Ahora</a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50
+    });
+  </script>
+</body>
+
+</html>
