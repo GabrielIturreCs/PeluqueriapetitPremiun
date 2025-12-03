@@ -3,6 +3,8 @@
 ## Descripción
 Sitio web profesional para Peluquería Petit, un salón de belleza ubicado en Palpalá, Jujuy, Argentina. Especializado en cortes profesionales, permanentes y tratamientos capilares con asesoramiento personalizado.
 
+🎄 **Versión Navidad 2024 activa** - Tema festivo con ofertas especiales
+
 ## Características Implementadas
 
 ### ✅ Diseño Moderno y Profesional
