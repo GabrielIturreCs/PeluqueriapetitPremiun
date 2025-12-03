@@ -19,23 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-
-            // Animate hamburger to X
-            const bars = menuToggle.querySelectorAll('.bar');
-            if (mainNav.classList.contains('active')) {
-                bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                bars[1].style.opacity = '0'; // Hide middle bar if there were 3, but we have 2
-                // Wait, CSS has 2 bars? Let's check CSS. 
-                // CSS has .bar but didn't specify nth-child. 
-                // Let's just toggle a class on the button for easier CSS handling if needed, 
-                // but for now simple JS rotation is fine.
-                // Actually, let's just toggle a class 'open' on the button and handle animation in CSS or here.
-                menuToggle.classList.toggle('open');
-            } else {
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                menuToggle.classList.remove('open');
-            }
+            menuToggle.classList.toggle('open');
         });
     }
 
@@ -46,30 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.classList.remove('open');
         });
     });
-
-    // ===== Carousel Scroll Indicator =====
-    const scrollContainer = document.querySelector('.services-scroll-container');
-    const dots = document.querySelectorAll('.scroll-dot');
-
-    if (scrollContainer && dots.length > 0) {
-        scrollContainer.addEventListener('scroll', () => {
-            const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            const scrollLeft = scrollContainer.scrollLeft;
-            const percent = scrollLeft / scrollWidth;
-
-            // Calculate active dot index based on percentage
-            // We have 5 dots. 
-            const activeIndex = Math.min(Math.floor(percent * dots.length), dots.length - 1);
-
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        });
-    }
 
     // ===== Smooth Scroll for Anchor Links =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -92,32 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    // ===== Modals =====
-    window.openModal = function (modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-    };
 
-    window.closeModal = function (modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-    };
-
-    // Close modal when clicking outside content
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
     // ===== Parallax Effect =====
     const parallaxBg = document.querySelector('.hero-bg-parallax');
     if (parallaxBg) {
@@ -126,9 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
     }
-    // ===== Before/After Slider =====
-    const slider = document.querySelector('.comparison-slider');
-    if (slider) {
+
+    // ===== Before/After Sliders (Multiple) =====
+    const sliders = document.querySelectorAll('.comparison-slider');
+    sliders.forEach(slider => {
         const beforeImage = slider.querySelector('.before-image');
         const sliderHandle = slider.querySelector('.slider-handle');
 
@@ -139,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clamp between 0 and 100
             position = Math.max(0, Math.min(100, position));
 
-            beforeImage.style.width = `${position}%`;
+            // Use clip-path for "sliding door" effect
+            beforeImage.style.clipPath = `inset(0 ${100 - position}% 0 0)`;
             sliderHandle.style.left = `${position}%`;
         };
 
@@ -152,5 +89,84 @@ document.addEventListener('DOMContentLoaded', () => {
         slider.addEventListener('touchmove', (e) => {
             slide(e.touches[0].clientX);
         });
-    }
+    });
 });
+
+// ===== Global Functions for HTML Interaction =====
+
+// Accordion Toggle
+// Accordion Toggle (Senior Friendly)
+window.toggleAccordion = function (button) {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('.fa-chevron-down');
+
+    // Toggle active class on content
+    content.classList.toggle('active');
+
+    // Rotate icon
+    if (content.classList.contains('active')) {
+        icon.style.transform = 'rotate(180deg)';
+        content.style.maxHeight = content.scrollHeight + "px";
+    } else {
+        icon.style.transform = 'rotate(0deg)';
+        content.style.maxHeight = "0";
+    }
+};
+
+// Initialize Accordions (Open ALL by Default for Marketing/Visibility)
+document.addEventListener('DOMContentLoaded', () => {
+    // Open ALL accordions by default so users see everything immediately
+    const allAccordions = document.querySelectorAll('.accordion-header');
+    allAccordions.forEach(btn => {
+        // Add a small delay to ensure styles are loaded and scrollHeight is correct
+        setTimeout(() => {
+            // Only open if not already open (though logic handles toggle, we assume they start closed in HTML)
+            toggleAccordion(btn);
+        }, 100);
+    });
+});
+
+// Service Selection (WhatsApp Integration)
+window.selectService = function (serviceName, price) {
+    // Format price
+    const formattedPrice = price > 0
+        ? price.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })
+        : 'Consultar';
+
+    // Construct WhatsApp Message
+    let message = `Hola, quiero reservar el servicio: *${serviceName}*`;
+    if (price > 0) {
+        message += ` por ${formattedPrice}`;
+    }
+    message += `. ¿Tienen disponibilidad?`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/543884461948?text=${encodedMessage}`;
+
+    // Open in new tab
+    window.open(whatsappUrl, '_blank');
+};
+
+// Testimonials Scroll Logic
+window.scrollTestimonials = function (direction) {
+    const container = document.getElementById('testimonials-scroll');
+    const scrollAmount = 350; // Approx card width + gap
+
+    if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+};
+
+// Transformations Scroll Logic
+window.scrollTransformations = function (direction) {
+    const container = document.getElementById('transformations-scroll');
+    const scrollAmount = container.offsetWidth; // Scroll one full screen width
+
+    if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+};

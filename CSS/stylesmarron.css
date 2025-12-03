@@ -572,10 +572,13 @@ img {
 /* Before Image (Grayscale for dramatic effect) */
 .before-image {
     z-index: 1;
-    width: 50%;
-    /* Initial state */
+    width: 100%;
+    /* Always full width to prevent zoom/squash */
     filter: grayscale(80%) contrast(1.1);
-    /* Make "Before" look slightly duller */
+    clip-path: inset(0 50% 0 0);
+    /* Initial state: show 50% */
+    transition: clip-path 0.1s ease-out;
+    /* Smooth out fast movements */
 }
 
 .after-image {

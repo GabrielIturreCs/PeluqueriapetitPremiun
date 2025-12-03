@@ -1,0 +1,51 @@
+/* Christmas Theme Overrides */
+
+:root {
+    --christmas-red: #C41E3A;
+    --christmas-green: #165B33;
+    --christmas-gold: #D4AF37;
+    --snow-white: #F8F9FA;
+}
+
+/* Promo Cards Festive Touch */
+.snap-center {
+    border-color: var(--christmas-red) !important;
+}
+
+.snap-center .bg-brand-cream {
+    background-color: #FFF0F0 !important;
+    /* Light red tint */
+}
+
+.snap-center i {
+    color: var(--christmas-red) !important;
+}
+
+/* Buttons */
+button.bg-brand-gold,
+a.bg-brand-gold {
+    background-color: var(--christmas-red) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4) !important;
+}
+
+button.bg-brand-gold:hover,
+a.bg-brand-gold:hover {
+    background-color: #A01830 !important;
+}
+
+/* Badges */
+.bg-red-600 {
+    background-color: var(--christmas-green) !important;
+    /* Swap red badge for green to contrast with red buttons */
+}
+
+/* Navbar */
+.luxury-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer or Contact festive touch */
+footer {
+    border-top: 4px solid var(--christmas-green);
+}
